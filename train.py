@@ -21,10 +21,10 @@ test_data = test_data.map(preprocess, batched=True)
 
 # Define Trainer
 training_args = TrainingArguments(
-    output_dir="/output",
+    output_dir="/mnt/ceph_rbd",
     evaluation_strategy="epoch",
     save_strategy="epoch",
-    logging_dir="/output/logs",
+    logging_dir="/mnt/ceph_rbd/logs",
     logging_steps=10,
     per_device_train_batch_size=8,
     per_device_eval_batch_size=8,
@@ -46,5 +46,5 @@ eval_results = trainer.evaluate()
 print("Evaluation results:", eval_results)
 
 # Save accuracy to file
-with open("/output/test_accuracy.txt", "w") as f:
+with open("/mnt/ceph_rbd/test_accuracy.txt", "w") as f:
     f.write(f"Test accuracy: {eval_results['eval_accuracy']:.4f}\n")
