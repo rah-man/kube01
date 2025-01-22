@@ -47,4 +47,4 @@ print("Evaluation results:", eval_results)
 
 # Save accuracy to file
 with open("/mnt/ceph_rbd/test_accuracy.txt", "w") as f:
-    f.write(f"Test accuracy: {eval_results['eval_accuracy']:.4f}\n")
+    f.write(f"Eval results: {eval_results}\n")
