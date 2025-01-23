@@ -22,7 +22,7 @@ test_data = test_data.map(preprocess, batched=True)
 # Define Trainer
 training_args = TrainingArguments(
     output_dir="/mnt/ceph_rbd",
-    evaluation_strategy="epoch",
+    eval_strategy="epoch",
     save_strategy="epoch",
     logging_dir="/mnt/ceph_rbd/logs",
     logging_steps=10,
