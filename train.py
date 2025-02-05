@@ -46,5 +46,5 @@ eval_results = trainer.evaluate()
 print("Evaluation results:", eval_results)
 
 # Save accuracy to file
-with open("/mnt/ceph_rbd/test_accuracy.txt", "w") as f:
+with open("/mnt/app/test_accuracy.txt", "w") as f:
     f.write(f"Eval results: {eval_results}\n")
