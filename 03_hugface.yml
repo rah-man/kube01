@@ -1,0 +1,48 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: frahman-hugface-job
+  labels:
+    kueue.x-k8s.io/queue-name: eidf106ns-user-queue
+spec:
+  completions: 1
+  template:
+    metadata:
+      name: frahman-hugface-pod
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: frahman-hugface-con
+          image: 'python:3.9-slim'
+          command:
+            - /bin/sh
+            - '-c'
+            - '--'
+          args:
+            - |
+              apt-get update &&
+              apt-get install -y git &&
+              pip install --upgrade pip &&
+              pip install transformers[torch] datasets torch &&
+              echo "Dependencies installed" &&
+              git clone https://github.com/rah-man/kube01.git &&
+              cd kube01 &&
+              python train.py &&
+              echo "Done training and saving"
+          volumeMounts:
+            - mountPath: /mnt/app
+              name: volume
+          resources:
+            requests:
+              cpu: 2
+              memory: 1Gi
+            limits:
+              cpu: 4
+              memory: 4Gi
+              nvidia.com/gpu: 1
+      nodeSelector:
+        nvidia.com/gpu.product: NVIDIA-A100-SXM4-40GB-MIG-1g.5gb
+      volumes:
+        - name: volume
+          persistentVolumeClaim:
+            claimName: frahman-pvc
