@@ -24,7 +24,7 @@ spec:
               cpu: 1
               memory: 1Gi
           volumeMounts:
-            - mountPath: /mnt/ceph_rbd
+            - mountPath: /mnt/app
               name: volume
       restartPolicy: Never
       volumes:
