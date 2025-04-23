@@ -3,7 +3,8 @@ kind: Job
 metadata:
   name: frahman-hugface-job
   labels:
-    kueue.x-k8s.io/queue-name: eidf106ns-user-queue
+    #kueue.x-k8s.io/queue-name: eidf106ns-user-queue
+    kueue.x-k8s.io/queue-name: eidf186ns-user-queue
 spec:
   completions: 1
   template:
@@ -40,9 +41,10 @@ spec:
               cpu: 4
               memory: 4Gi
               nvidia.com/gpu: 1
-      nodeSelector:
-        nvidia.com/gpu.product: NVIDIA-A100-SXM4-40GB-MIG-1g.5gb
+      #nodeSelector:
+      #  nvidia.com/gpu.product: NVIDIA-A100-SXM4-40GB-MIG-1g.5gb
       volumes:
         - name: volume
           persistentVolumeClaim:
-            claimName: frahman-pvc
+            #claimName: frahman-pvc
+            claimName: pytorch-pvc
