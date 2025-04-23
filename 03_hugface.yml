@@ -1,7 +1,8 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: frahman-hugface-job
+  #name: frahman-hugface-job
+  generateName: frahman-hugface-job-
   labels:
     #kueue.x-k8s.io/queue-name: eidf106ns-user-queue
     kueue.x-k8s.io/queue-name: eidf186ns-user-queue
