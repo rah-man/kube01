@@ -57,6 +57,7 @@ training_args = TrainingArguments(
     output_dir="/mnt/app",
     eval_strategy="epoch",
     save_strategy="epoch",
+    save_total_limit=1,
     logging_dir="/mnt/app/logs",
     logging_steps=10,
     per_device_train_batch_size=8,
